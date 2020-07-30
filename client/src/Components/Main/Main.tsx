@@ -30,7 +30,7 @@ const Main = (props: MainProps) => {
     setCountryInput(e.target.value)
     if (e.target.value.length > 3) {
       console.log('greater than 3..')
-      const response = await fetch(`http://localhost:3001/location/${e.target.value}`)
+      const response = await fetch(`/location/${e.target.value}`)
       const processed = await response.json()
       if (processed.data && processed.data.Code !== 'ServiceUnavailable') {
         setLocationList(processed.data)
@@ -57,7 +57,7 @@ const Main = (props: MainProps) => {
   }
 
   const getWeatherBylocation = async (location) => {
-    const response = await fetch(`http://localhost:3001/weather/${location.Key}`)
+    const response = await fetch(`/weather/${location.Key}`)
     const processed = await response.json()
     if (processed.data && processed.data.Code !== 'ServiceUnavailable') {
       setWeather(processed.data.DailyForecasts)
