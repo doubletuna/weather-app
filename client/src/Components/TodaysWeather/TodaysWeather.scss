@@ -1,0 +1,39 @@
+.todays-weather-wrapper {
+  max-width: 700px;
+  padding: 20px;
+  margin: auto;
+  border-radius: 6px;
+  box-shadow: 0 0 12px 0 rgba(0, 0, 0, .2);
+
+  .location-title {
+    font-size: 18px;
+  }
+
+  .streachy-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+
+    .temp {
+      font-size: 90px;
+    }
+
+    .icon-temp {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      .inner-temp {
+        font-size: 20;
+        font-weight: 700;
+      }
+
+      .weather-icon {
+        width: 140px;
+      }
+    }
+
+  }
+
+}
