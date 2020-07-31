@@ -1,7 +1,5 @@
 const fetch = require('node-fetch')
 
-const { constants } = require('../constants')
-
 exports.getLocation = async (req, res, next) => {
   const location = req.params.location;
 
@@ -9,19 +7,11 @@ exports.getLocation = async (req, res, next) => {
     res.status(401).send('location parameter too short...')
   }
   try {
-    
-    if (location === 'test') {
-      console.log('test identified, sending LOCATION_TEST')
-      res.status(200).send({ data: constants.LOCATION_TEST })
-    }
-  
-  /*
-  try {
     // gmail
-    // const response = await fetch(`http://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=NYJhk1cGkGybYGo18S8Zc9kMiF8Jrcqq&q=${location}`, { method: 'GET' })
+    const response = await fetch(`http://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=NYJhk1cGkGybYGo18S8Zc9kMiF8Jrcqq&q=${location}`, { method: 'GET' })
 
     // hotmail
-    const response = await fetch(`http://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=yweoRSUGDOVX8Ke0S0Gv3ANX09okxr0F&q=${location}`, { method: 'GET' })
+    // const response = await fetch(`http://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=yweoRSUGDOVX8Ke0S0Gv3ANX09okxr0F&q=${location}`, { method: 'GET' })
     if (response.Code == 'ServiceUnavailable') {
       res.status(response.status).send({ message: response.Message })
     }
@@ -29,7 +19,6 @@ exports.getLocation = async (req, res, next) => {
     // console.log('locationList ? ', locationList)
     console.log('fetch locationList success')
     res.status(200).send({ data: locationList })
-    */
   } catch (error) {
     res.status(500).send('problem with server ?? ')
   }

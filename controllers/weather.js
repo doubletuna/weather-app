@@ -1,5 +1,4 @@
 const fetch = require('node-fetch')
-const { constants } = require('../constants')
 
 exports.getWeatherForecastByKey = async (req, res, next) => {
   const key = req.params.key;
@@ -7,9 +6,6 @@ exports.getWeatherForecastByKey = async (req, res, next) => {
   if (!key) {
     res.status(401).send('no key provided...')
   }
-  weather = constants.WEATHER_TEST
-  res.status(200).send({ data: weather })
-  /*
   try {
     // gmail
     const response = await fetch(`http://dataservice.accuweather.com/forecasts/v1/daily/5day/${key}?apikey=NYJhk1cGkGybYGo18S8Zc9kMiF8Jrcqq&details=true&metric=true`, { method: 'GET' })
@@ -27,5 +23,4 @@ exports.getWeatherForecastByKey = async (req, res, next) => {
   catch (error) {
     res.status(500).send('problem with server ?? ')
   }
-  */
 }
