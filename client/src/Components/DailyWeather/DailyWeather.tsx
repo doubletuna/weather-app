@@ -2,7 +2,7 @@ import React from 'react'
 import './DailyWeather.scss'
 import { Units } from '../../constants'
 import moment from 'moment'
-import {tempConversion} from '../../util'
+import { tempConversion } from '../../util'
 interface DailyWeatherProps {
   date: string,
   max: number,
@@ -21,16 +21,18 @@ const DailyWeather = (props: DailyWeatherProps) => {
       <div className="day-of-week">{date[0]} <span className="date">{date[1]}</span>  </div>
 
       {convertTemp ?
-        <><div className="temp">Max: {tempConversion(props.max)}&#8457;</div>
-          <div className="temp">Min: {tempConversion(props.min)}&#8457;</div>
+        <>
+          <div className="temp"><span className="max-min">Max: </span>{tempConversion(props.max)}&#8457;</div>
+          <div className="temp"><span className="max-min">Min: </span>{tempConversion(props.min)}&#8457;</div>
         </>
         :
-        <><div className="temp">Max: {props.max}&#8451;</div>
-          <div className="temp">Min: {props.min}&#8451;</div>
+        <>
+          <div className="temp"><span className="max-min">Max: </span>{props.max}&#8451;</div>
+          <div className="temp"><span className="max-min">Min: </span>{props.min}&#8451;</div>
         </>
       }
 
-      <img className="weather-icon" src={`/images/0${props.icon}-s.png`} alt={props.iconPhrase} />
+      <img className="weather-icon" src={`/images/${props.icon < 10 ? '0' + props.icon : props.icon}-s.png`} alt={props.iconPhrase} />
     </div>
   )
 }

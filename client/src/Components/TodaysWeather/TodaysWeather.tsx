@@ -31,7 +31,7 @@ const TodaysWeather = (props: TodaysWeatherProps) => {
           </>
         }
         <div className="icon-temp">
-          <img className="weather-icon" src={`/images/0${props.icon}-s.png`} alt={props.iconPhrase} />
+          <img className="weather-icon" src={`/images/${props.icon < 10 ? '0'+props.icon : props.icon}-s.png`} alt={props.iconPhrase} />
           {
             convertTemp ?
               <><div className="inner-temp">{tempConversion(props.max)}&#176;/{tempConversion(props.min)}&#176;</div>

@@ -8,6 +8,11 @@
   padding: 10px 5px;
   box-shadow: 0 0 12px 0 rgba(0, 0, 0, .2);
 
+  @media (max-width: 650px) {
+    width: 70px;
+    border: none;
+  }
+
   .day-of-week {
     font-weight: bold;
 
@@ -19,10 +24,26 @@
   }
 
   .temp {
-
+    @media (max-width: 650px) {
+      .max-min {
+        display: none;
+      }
+    }
   }
 
   .weather-icon {
     padding-top: 10px;
+
+    @media (max-width: 650px) {
+      width: 55px;
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .daily-weather {
+
+    width: 48px;
+    border: none;
   }
 }

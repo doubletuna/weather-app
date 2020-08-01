@@ -5,6 +5,7 @@ import { IAppState } from '../../redux/app.state'
 import { connect } from 'react-redux'
 import { Units } from '../../constants'
 import { toggleUnits } from '../../redux/global/global.actions'
+import Search from '../Search/Search'
 
 interface NavBarProps {
   units: Units,
@@ -21,7 +22,7 @@ const NavBar = (props: NavBarProps) => {
   }
 
   return (
-    <nav>
+    <nav className="navbar-wrapper">
       <ul className="navbar-container">
         <li className="nav-option">
           <NavLink exact activeClassName="active" to="/">Home</NavLink>
@@ -34,9 +35,9 @@ const NavBar = (props: NavBarProps) => {
         </li>
         <li className="nav-option">
           <span className={`set-units ${units === Units.METRIC ? "active" : ""}`} onClick={() => toggleUnits(Units.METRIC)}>&#8451;</span> <span className={`set-units ${units === Units.IMPERIAL ? "active" : ""}`} onClick={() => toggleUnits(Units.IMPERIAL)}>&#8457;</span>
-
         </li>
       </ul>
+      <Search />
     </nav>
   )
 }
