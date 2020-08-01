@@ -2,8 +2,6 @@ const path = require('path')
 const express = require('express')
 const app = express()
 
-const publicPath = path.join(__dirname, '..', 'public')
-
 require('dotenv').config()
 
 const cors = require('cors')
@@ -20,7 +18,6 @@ const locationRoutes = require('./routes/location')
 const weatherRoutes = require('./routes/weather')
 app.use(locationRoutes)
 app.use(weatherRoutes)
-app.use(express.static(publicPath))
 
 if (process.env.NODE_ENV === 'production') {
   // Serve any static files
