@@ -16,6 +16,13 @@
 
     .temp {
       font-size: 90px;
+
+      @media (max-width: 450px) {
+        font-size: 75px;
+      }
+      @media (max-width: 400px) {
+        font-size: 65px;
+      }
     }
 
     .icon-temp {
