@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import './NavBar.scss'
-import { NavLink } from "react-router-dom"
+import { NavLink, useLocation } from "react-router-dom"
 import { IAppState } from '../../redux/app.state'
 import { connect } from 'react-redux'
 import { Units } from '../../constants'
@@ -12,6 +12,8 @@ interface NavBarProps {
   changeUnits: (units: Units) => void,
 }
 const NavBar = (props: NavBarProps) => {
+  const [currentPath, setCurrentPath] = useState<string>('')
+  const location = useLocation();
 
   const [units, setUnits] = useState<Units>(props.units)
 
@@ -20,6 +22,11 @@ const NavBar = (props: NavBarProps) => {
     units === Units.METRIC ? setUnits(Units.METRIC) : setUnits(Units.IMPERIAL)
     props.changeUnits(units)
   }
+
+  useEffect(() => {
+    setCurrentPath(location.pathname)
+    console.log('location.pathname ? ', location.pathname)
+  }, [location]);
 
   return (
     <nav className="navbar-wrapper">
@@ -37,7 +44,9 @@ const NavBar = (props: NavBarProps) => {
           <span className={`set-units ${units === Units.METRIC ? "active" : ""}`} onClick={() => toggleUnits(Units.METRIC)}>&#8451;</span> <span className={`set-units ${units === Units.IMPERIAL ? "active" : ""}`} onClick={() => toggleUnits(Units.IMPERIAL)}>&#8457;</span>
         </li>
       </ul>
-      <Search />
+      {
+        currentPath === '/' && <Search />
+      }
     </nav>
   )
 }
