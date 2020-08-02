@@ -23,23 +23,10 @@ const TodaysWeather = (props: TodaysWeatherProps) => {
     <div className="todays-weather-wrapper">
       <div className="location-title">{props.selectedLocation.LocalizedName}, {props.selectedLocation.Country.LocalizedName}</div>
       <div className="streachy-wrapper">
-        {convertTemp ?
-          <><div className="temp">{tempConversion(props.max)}&#8457;</div>
-          </>
-          :
-          <><div className="temp">{props.max}&#8451;</div>
-          </>
-        }
+        <div className="temp">{tempConversion(props.max, convertTemp)}</div>
         <div className="icon-temp">
-          <img className="weather-icon" src={`/images/${props.icon < 10 ? '0'+props.icon : props.icon}-s.png`} alt={props.iconPhrase} />
-          {
-            convertTemp ?
-              <><div className="inner-temp">{tempConversion(props.max)}&#176;/{tempConversion(props.min)}&#176;</div>
-              </>
-              :
-              <><div className="inner-temp">{props.max}&#176;/{props.min}&#176;</div>
-              </>
-          }
+          <img className="weather-icon" src={`/images/${props.icon < 10 ? '0' + props.icon : props.icon}-s.png`} alt={props.iconPhrase} />
+          <div className="inner-temp">{tempConversion(props.max, convertTemp)}&#176;/{tempConversion(props.min, convertTemp)}&#176;</div>
         </div>
       </div>
     </div>

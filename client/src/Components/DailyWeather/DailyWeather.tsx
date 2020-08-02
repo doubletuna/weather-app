@@ -20,17 +20,10 @@ const DailyWeather = (props: DailyWeatherProps) => {
     <div className="daily-weather" >
       <div className="day-of-week">{date[0]} <span className="date">{date[1]}</span>  </div>
 
-      {convertTemp ?
-        <>
-          <div className="temp"><span className="max-min">Max: </span>{tempConversion(props.max)}&#8457;</div>
-          <div className="temp"><span className="max-min">Min: </span>{tempConversion(props.min)}&#8457;</div>
-        </>
-        :
-        <>
-          <div className="temp"><span className="max-min">Max: </span>{props.max}&#8451;</div>
-          <div className="temp"><span className="max-min">Min: </span>{props.min}&#8451;</div>
-        </>
-      }
+
+      <div className="temp"><span className="max-min">Max: </span>{tempConversion(props.max, convertTemp)}</div>
+      <div className="temp"><span className="max-min">Min: </span>{tempConversion(props.min, convertTemp)}</div>
+
 
       <img className="weather-icon" src={`/images/${props.icon < 10 ? '0' + props.icon : props.icon}-s.png`} alt={props.iconPhrase} />
     </div>
