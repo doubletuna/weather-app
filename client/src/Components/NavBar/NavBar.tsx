@@ -25,7 +25,7 @@ const NavBar = (props: NavBarProps) => {
 
   useEffect(() => {
     setCurrentPath(location.pathname)
-    console.log('location.pathname ? ', location.pathname)
+    // console.log('location.pathname ? ', location.pathname)
   }, [location]);
 
   return (
