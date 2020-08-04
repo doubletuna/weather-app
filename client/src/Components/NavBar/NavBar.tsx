@@ -40,10 +40,12 @@ const NavBar = (props: NavBarProps) => {
         <li className="nav-option">
           <NavLink exact activeClassName="active" to="/about">About</NavLink>
         </li>
-        <li className="nav-option">
-          <span className={`set-units ${units === Units.METRIC ? "active" : ""}`} onClick={() => toggleUnits(Units.METRIC)}>&#8451;</span>
-          <span className={`set-units ${units === Units.IMPERIAL ? "active" : ""}`} onClick={() => toggleUnits(Units.IMPERIAL)}>&#8457;</span>
-        </li>
+        {
+          currentPath === '/' && <li className="nav-option">
+            <span className={`set-units ${units === Units.METRIC ? "active" : ""}`} onClick={() => toggleUnits(Units.METRIC)}>&#8451;</span>
+            <span className={`set-units ${units === Units.IMPERIAL ? "active" : ""}`} onClick={() => toggleUnits(Units.IMPERIAL)}>&#8457;</span>
+          </li>
+        }
       </ul>
       {
         currentPath === '/' && <Search />
