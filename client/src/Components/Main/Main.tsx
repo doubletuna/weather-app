@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import './Main.scss'
-import * as _ from 'lodash'
 import { ILocation, IDailyForecast } from '../../interfaces/interfaces'
 import { connect } from 'react-redux'
 import { IAppState } from '../../redux/app.state'
@@ -19,7 +18,7 @@ const Main = (props: MainProps) => {
 
   useEffect(() => {
     setWeather(props.dailyForecast)
-  })
+  },[props.dailyForecast])
   
   return (
     <div className="main-wrapper">

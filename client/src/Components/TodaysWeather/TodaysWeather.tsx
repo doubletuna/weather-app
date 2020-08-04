@@ -1,7 +1,6 @@
 import React from 'react'
 import './TodaysWeather.scss'
 import { tempConversion } from '../../util'
-import moment from 'moment'
 import { Units } from '../../constants'
 import { ILocation } from '../../interfaces/interfaces'
 
@@ -16,7 +15,6 @@ interface TodaysWeatherProps {
 }
 
 const TodaysWeather = (props: TodaysWeatherProps) => {
-  const date = moment(props.date).format('llll').split(',')
   const convertTemp: boolean = props.units === Units.METRIC ? false : true
   console.log('props.selectedLocation ? ', props.selectedLocation)
   return (
