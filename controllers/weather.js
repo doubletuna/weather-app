@@ -10,11 +10,11 @@ exports.getWeatherForecastByKey = async (req, res, next) => {
   if (!key) {
     res.status(401).send('no key provided...')
   }
-  console.log('>>>>>>>>>>>>>', process.env.ACCUWEATHER_API_KEY1)
   try {
     // find relevant weather from today
     const forecastExists = await accuweatherService.findForecast(key)
-    if (forecastExists && forecastExists.length > 0 && moment(forecastExists[0].updatedAt).fromNow().match(/year|day/) === null) {
+
+    if (forecastExists && forecastExists.length > 0 && moment().isSame(moment(forecastExists[0].updatedAt), 'date') ) {
       res.status(200).send({ data: forecastExists[0].forecastData, db: true })
     } else {
       console.log('access accuweather API..')
