@@ -4,7 +4,7 @@ import * as _ from 'lodash'
 import { GLOBAL_ACTIONS_CONST } from './global.actions'
 
 export const globalReducer = (lastState: IGlobalState, action: any): IGlobalState => {
-  console.log('action ? ', action)
+  // console.log('action ? ', action)
 
   if (!lastState) return INITIAL_GLOBAL_STATE
 
