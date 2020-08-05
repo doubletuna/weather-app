@@ -36,12 +36,15 @@
 
   .autofill-container {
     background-color: #ffffff;
-    // padding-left: 10px;
     border-radius: 6px;
     width: 300px;
     position: absolute;
-    top: 36px;
+    top: 45px;
     z-index: 10;
+
+    @media (max-width: 700px) {
+      top: 88px;
+    }
 
 
     .autofill-option {
