@@ -1,7 +1,12 @@
 .search-wrapper {
-  padding-left: calc(50vw - 450px);  height: 32px;
+  padding-left: calc(50vw - 450px);
+  height: 32px;
   top: 10px;
   left: calc(50vw - 150px);
+
+  @media (max-width: 700px) {
+    padding-bottom: 10px;
+  }
 
   .search-field {
     width: 300px;
