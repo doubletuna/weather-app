@@ -35,7 +35,7 @@ const NavBar = (props: NavBarProps) => {
           <NavLink exact activeClassName="active" to="/">Home</NavLink>
         </li>
         <li className="nav-option">
-          <NavLink exact activeClassName="active" to="/favorites">Favorites</NavLink>
+          <NavLink exact activeClassName="active" to="/recentLocations">Locations</NavLink>
         </li>
         <li className="nav-option">
           <NavLink exact activeClassName="active" to="/about">About</NavLink>

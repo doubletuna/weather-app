@@ -23,12 +23,10 @@ const Search = (props: SearchProps) => {
     e.preventDefault()
     setCountryInput(e.target.value)
     if (e.target.value.length > 3) {
-      console.log('greater than 3..')
       const response = await fetch(`/location/${e.target.value}`)
       const processed = await response.json()
       if (processed.data && processed.data.Code !== 'ServiceUnavailable') {
         setLocationList(processed.data)
-        console.log('data ? ', processed.data)
       }
     }
   }
@@ -55,7 +53,6 @@ const Search = (props: SearchProps) => {
     const processed = await response.json()
     if (processed.data && processed.data.Code !== 'ServiceUnavailable') {
       props.setDailyForecast(processed.data.DailyForecasts)
-      console.log('DailyForecasts ? ', processed.data.DailyForecasts)
     }
   }
 

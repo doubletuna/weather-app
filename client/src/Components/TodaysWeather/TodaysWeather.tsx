@@ -18,7 +18,6 @@ interface TodaysWeatherProps {
 const TodaysWeather = (props: TodaysWeatherProps) => {
   const date = moment(props.date).format('LLLL').split(',')
   const convertTemp: boolean = props.units === Units.METRIC ? false : true
-  console.log('props.selectedLocation ? ', props.selectedLocation)
   return (
     <div className="todays-weather-wrapper">
       <div className="location-title">{props.selectedLocation.LocalizedName}, {props.selectedLocation.Country.LocalizedName}, {date[0]}</div>

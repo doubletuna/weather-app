@@ -1,4 +1,4 @@
-.favorites-wrapper {
+.recent-locations-wrapper {
   width: 100%;
   height: -moz-fit-content;
   height: fit-content;
@@ -13,7 +13,7 @@
   padding: 30px 10px;
   color: #ffffff;
 
-  .favorites-container {
+  .recent-locations-container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
   }

@@ -2,9 +2,9 @@ import React from 'react'
 // import  About  from '../About/About'
 import Main from '../Components/Main/Main'
 // import { NavBar } from './components/NavBar';
-import { HashRouter, Route, Switch, Redirect } from 'react-router-dom';
+import { HashRouter, Route, Switch } from 'react-router-dom';
 import About from '../Components/About/About';
-import Favorites from '../Components/Favorites/Favorites';
+import RecentLocations from '../Components/RecentLocations/RecentLocations';
 import NavBar from '../Components/NavBar/NavBar';
 import './Routes.scss'
 
@@ -16,10 +16,7 @@ export const Routes = () => {
         <Switch>
           <Route exact path="/" component={Main} />
           <Route exact path="/about" component={About} />
-          <Route exact path="/favorites" component={Favorites} />
-          <Route exact path="/favorites1">
-            <Redirect to="/favorites" />
-          </Route>
+          <Route exact path="/recentLocations" component={RecentLocations} />
         </Switch>
       </HashRouter>
     </div>
