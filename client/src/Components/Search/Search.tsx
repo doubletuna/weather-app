@@ -69,7 +69,7 @@ const Search = (props: SearchProps) => {
         {
           locationList && locationList.map((location, idx) => {
             return (
-              <button className="autofill-option" onClick={() => handleSelectionClicked(location.Key)} key={idx}>{location.LocalizedName}</button>
+              <button className="autofill-option" onClick={() => handleSelectionClicked(location.Key)} key={idx}>{location.LocalizedName}, {location.Country.LocalizedName}</button>
             )
           })
         }

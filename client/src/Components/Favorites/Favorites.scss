@@ -1,0 +1,20 @@
+.favorites-wrapper {
+  width: 100%;
+  height: -moz-fit-content;
+  height: fit-content;
+  min-height: calc(100% - 50px);
+  box-sizing: border-box;
+  background-image: url(/background.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  font-family: Helvetica;
+  font-size: 16px;
+  padding: 30px 10px;
+  color: #ffffff;
+
+  .favorites-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  }
+}

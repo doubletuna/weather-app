@@ -3,6 +3,7 @@ import './TodaysWeather.scss'
 import { tempConversion } from '../../util'
 import { Units } from '../../constants'
 import { ILocation } from '../../interfaces/interfaces'
+import moment from 'moment'
 
 interface TodaysWeatherProps {
   selectedLocation: ILocation,
@@ -15,11 +16,12 @@ interface TodaysWeatherProps {
 }
 
 const TodaysWeather = (props: TodaysWeatherProps) => {
+  const date = moment(props.date).format('LLLL').split(',')
   const convertTemp: boolean = props.units === Units.METRIC ? false : true
   console.log('props.selectedLocation ? ', props.selectedLocation)
   return (
     <div className="todays-weather-wrapper">
-      <div className="location-title">{props.selectedLocation.LocalizedName}, {props.selectedLocation.Country.LocalizedName}</div>
+      <div className="location-title">{props.selectedLocation.LocalizedName}, {props.selectedLocation.Country.LocalizedName}, {date[0]}</div>
       <div className="streachy-wrapper">
         <div className="temp">{tempConversion(props.max, convertTemp)}</div>
         <div className="icon-temp">

@@ -4,7 +4,6 @@ import { Units } from '../constants';
 export interface IGlobalState {
   selectedLocation?: ILocation,
   locationList: ILocation[],
-  favorites?: ILocation[],
   dailyForecast: IDailyForecast[],
   units: Units,
 }
