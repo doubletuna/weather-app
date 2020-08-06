@@ -12,11 +12,13 @@ export const globalReducer = (lastState: IGlobalState, action: any): IGlobalStat
     case GLOBAL_ACTIONS_CONST.ADD_TO_LOCATION_LIST:
       const locationList = _.cloneDeep(lastState.locationList)
       locationList.push(action.payload)
-      return { ...lastState, locationList: locationList, selectedLocation: action.payload}
+      return { ...lastState, locationList: locationList, selectedLocation: action.payload }
     case GLOBAL_ACTIONS_CONST.SET_DAILY_FORECAST:
       return { ...lastState, dailyForecast: action.payload }
     case GLOBAL_ACTIONS_CONST.TOGGLE_UNITS:
       return { ...lastState, units: action.payload }
+    case GLOBAL_ACTIONS_CONST.SET_SELECTED_LOCATION:
+      return { ...lastState, selectedLocation: action.payload }
     default:
       return lastState;
   }

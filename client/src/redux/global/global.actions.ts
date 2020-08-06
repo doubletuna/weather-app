@@ -7,6 +7,7 @@ export const GLOBAL_ACTIONS_CONST = {
   ADD_TO_LOCATION_LIST: 'ADD_TO_LOCATION_LIST',
   SET_DAILY_FORECAST: 'SET_DAILY_FORECAST',
   TOGGLE_UNITS: 'TOGGLE_UNITS',
+  SET_SELECTED_LOCATION: 'SET_SELECTED_LOCATION',
 }
 
 export const clearStateGlobal = (dispatch: any) => {
@@ -34,4 +35,11 @@ export const toggleUnits = (dispatch: any, payload: Units) => {
     type: GLOBAL_ACTIONS_CONST.TOGGLE_UNITS,
     payload,
   });
+}
+
+export const setSelectedLocation = (dispatch: any, payload: ILocation) => {
+  dispatch({
+    type: GLOBAL_ACTIONS_CONST.SET_SELECTED_LOCATION,
+    payload
+  })
 }
