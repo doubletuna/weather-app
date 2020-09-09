@@ -3,17 +3,17 @@ import React from 'react'
 import './Location.scss'
 import { ILocation } from '../../interfaces/interfaces'
 
-interface LocationProps {
+interface ILocationProps {
   location: ILocation
   clickHandler: (key: number) => void
 }
 
-const Location = (props: LocationProps) => {
+const Location: React.FC<ILocationProps> = ({location, clickHandler}: ILocationProps) => {
 
   return (
-    <div className="location-wrapper" onClick={() => props.clickHandler(props.location.Key)}>
-      <div className="location">{props.location.LocalizedName}</div>
-      <div className="country">{props.location.Country.LocalizedName}</div>
+    <div className="location-wrapper" onClick={() => clickHandler(location.Key)}>
+      <div className="location">{location.LocalizedName}</div>
+      <div className="country">{location.Country.LocalizedName}</div>
     </div>
   )
 

@@ -7,20 +7,19 @@ import { Units } from '../../constants'
 import { toggleUnits } from '../../redux/global/global.actions'
 import Search from '../Search/Search'
 
-interface NavBarProps {
+interface INavBarProps {
   units: Units,
   changeUnits: (units: Units) => void,
 }
-const NavBar = (props: NavBarProps) => {
+const NavBar: React.FC<INavBarProps> = ({units, changeUnits}: INavBarProps) => {
   const [currentPath, setCurrentPath] = useState<string>('')
   const location = useLocation();
 
-  const [units, setUnits] = useState<Units>(props.units)
+  const [currentUnits, setCurrentUnits] = useState<Units>(units)
 
   const toggleUnits = (units: Units) => {
-    console.log(units)
-    units === Units.METRIC ? setUnits(Units.METRIC) : setUnits(Units.IMPERIAL)
-    props.changeUnits(units)
+    currentUnits === Units.METRIC ? setCurrentUnits(Units.METRIC) : setCurrentUnits(Units.IMPERIAL)
+    changeUnits(units)
   }
 
   useEffect(() => {

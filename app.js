@@ -1,13 +1,11 @@
+require('dotenv').config()
 const path = require('path')
+const bodyParser = require('body-parser')
+const cors = require('cors')
 const express = require('express')
 const app = express()
 
-require('dotenv').config()
-
-const cors = require('cors')
 app.use(cors())
-
-const bodyParser = require('body-parser')
 
 const mongoose = require('mongoose')
 
@@ -16,10 +14,7 @@ const port = process.env.PORT || 3001;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }))
 
-const locationRoutes = require('./routes/location')
-const weatherRoutes = require('./routes/weather')
-app.use(locationRoutes)
-app.use(weatherRoutes)
+require('./routes/index')(app);
 
 if (process.env.NODE_ENV === 'production') {
   // Serve any static files
@@ -44,5 +39,4 @@ mongoose.connect(process.env.DBURL, {
   .catch(err => {
     console.log(err);
   })
-
   

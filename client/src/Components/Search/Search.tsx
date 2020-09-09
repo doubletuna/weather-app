@@ -7,17 +7,15 @@ import { connect } from 'react-redux'
 import _ from 'lodash'
 import { handleFocus } from '../../util'
 
-interface SearchProps {
+interface ISearchProps {
   addToLocation: (location: ILocation) => void
   setDailyForecast: (dailyForecast: IDailyForecast[]) => void,
-  selectedLocation: ILocation,
   locationList: ILocation[],
-  dailyForecast: IDailyForecast[],
 }
 
-const Search = (props: SearchProps) => {
+const Search: React.FC<ISearchProps> = ({ addToLocation, setDailyForecast, locationList }: ISearchProps) => {
   const [countryInput, setCountryInput] = useState<string>('')
-  const [locationList, setLocationList] = useState<any[]>()
+  const [locationListOptions, setLocationListOptions] = useState<any[]>()
 
   const handleSearchFieldChange = async (e) => {
     e.preventDefault()
@@ -25,23 +23,22 @@ const Search = (props: SearchProps) => {
     if (e.target.value.length > 3) {
       const response = await fetch(`/location/${e.target.value}`)
       const processed = await response.json()
-      if (processed.data && processed.data.Code !== 'ServiceUnavailable') {
-        setLocationList(processed.data)
+      if (processed.data?.Code !== 'ServiceUnavailable') {
+        setLocationListOptions(processed.data)
       }
     }
   }
 
   const handleSelectionClicked = async (key) => {
-    const selectedLocation = _.find(locationList, { 'Key': key })
-    const locationExists = _.find(props.locationList, { 'Key': key })
+    const selectedLocation = _.find(locationListOptions, { 'Key': key })
+    const locationExists = _.find(locationList, { 'Key': key })
     if (selectedLocation) {
       setCountryInput(selectedLocation.LocalizedName)
-      setLocationList([])
+      setLocationListOptions([])
       getWeatherBylocation(selectedLocation)
 
-      // make sure that we have unique locations @ locationList 
       if (!locationExists) {
-        props.addToLocation(selectedLocation)
+        addToLocation(selectedLocation)
       }
     } else {
       console.log('error crapola')
@@ -51,8 +48,8 @@ const Search = (props: SearchProps) => {
   const getWeatherBylocation = async (location) => {
     const response = await fetch(`/weather/${location.Key}`)
     const processed = await response.json()
-    if (processed.data && processed.data.Code !== 'ServiceUnavailable') {
-      props.setDailyForecast(processed.data.DailyForecasts)
+    if (processed.data?.Code !== 'ServiceUnavailable') {
+      setDailyForecast(processed.data.DailyForecasts)
     }
   }
 
@@ -64,7 +61,7 @@ const Search = (props: SearchProps) => {
       </>
       <div className="autofill-container">
         {
-          locationList && locationList.map((location, idx) => {
+          locationListOptions?.map((location, idx) => {
             return (
               <button className="autofill-option" onClick={() => handleSelectionClicked(location.Key)} key={idx}>{location.LocalizedName}, {location.Country.LocalizedName}</button>
             )
